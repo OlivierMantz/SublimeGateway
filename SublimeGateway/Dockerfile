@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["SublimeGateway/SublimeGateway.csproj", "./SublimeGateway/"]
+COPY ["SublimeGateway/SublimeGateway.csproj", "SublimeGateway/"]
 RUN dotnet restore "SublimeGateway/SublimeGateway.csproj"
 COPY . .
 WORKDIR "/src/SublimeGateway"
