@@ -1,12 +1,12 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Cache.CacheManager;
+using Ocelot.Provider.Kubernetes;
 
 namespace SublimeGateway
 {
     public class Program
     {
-
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -20,11 +20,13 @@ namespace SublimeGateway
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddOcelot(builder.Configuration)
-            .AddCacheManager(x =>
-            {
-                x.WithDictionaryHandle();
-            });
+            //builder.Services.AddOcelot(builder.Configuration)
+            //.AddCacheManager(x =>
+            //{
+            //    x.WithDictionaryHandle();
+            //});
+
+            builder.Services.AddOcelot().AddKubernetes();
 
 
             var app = builder.Build();
@@ -47,6 +49,5 @@ namespace SublimeGateway
 
             app.Run();
         }
-
     }
 }
