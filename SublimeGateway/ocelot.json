@@ -2,27 +2,38 @@
     "Routes": [
         {
             "DownstreamPathTemplate": "/api/Users",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "UpstreamPathTemplate": "/Users",
-            "ServiceName": "sublime-gateway",
-            "UpstreamHttpMethod": [ "Get" ]
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "user-api-service.default.svc.cluster.local",
+                    "Port": 80
+                }
+            ],
+            // "ServiceName": "sublime-gateway",
+            "UpstreamHttpMethod": ["Get"]
         },
         {
             "DownstreamPathTemplate": "/api/Users/{id}",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "UpstreamPathTemplate": "/Users/{id}",
-            "ServiceName": "sublime-gateway",
-            "UpstreamHttpMethod": [ "Delete" ]
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "user-api-service.default.svc.cluster.local",
+                    "Port": 80
+                }
+            ],
+            // "ServiceName": "sublime-gateway",
+            "UpstreamHttpMethod": ["Delete"]
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "https://api.localhost:9080",
-        "ServiceDiscoveryProvider": {
-            "Host": "localhost", //localhost for k3d
-            "Port": "52003", //found using docker inspect k3d-sublimeapp-serverlb
-            "Token": "{K8S_TOKEN}", //retrieved using 
-            "Namespace": "default", // default value
-            "Type": "kube"
-        }
+        "BaseUrl": "http://api.localhost:9080"
+        // "ServiceDiscoveryProvider": {
+        //     "Host": "localhost", //localhost for k3d
+        //     "Port": "52003", //found using docker inspect k3d-sublimeapp-serverlb
+        //     "Namespace": "default", // default value
+        //     "Type": "kube"
+        // }
     }
 }
