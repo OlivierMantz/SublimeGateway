@@ -28,7 +28,7 @@
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "http://api.localhost:8080"
+        "BaseUrl": "http://api.sublimewebapp.me"
         // "ServiceDiscoveryProvider": {
         //     "Host": "localhost", //localhost for k3d
         //     "Port": "52003", //found using docker inspect k3d-sublimeapp-serverlb
