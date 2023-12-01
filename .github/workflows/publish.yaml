@@ -2,7 +2,7 @@ name: Lint Code, Build, Test and Publish
 
 on:
     push:
-        branches: [main, dev]
+        branches: [main, dev, kubernetes_deployment]
     pull_request:
         branches: [main, dev]
 
