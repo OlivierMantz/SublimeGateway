@@ -3,7 +3,7 @@
         {
             "DownstreamPathTemplate": "/api/Users",
             "DownstreamScheme": "http",
-            "UpstreamPathTemplate": "/Userss",
+            "UpstreamPathTemplate": "/",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "user-api-service.default.svc.cluster.local",
