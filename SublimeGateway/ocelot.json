@@ -6,7 +6,7 @@
             "UpstreamPathTemplate": "/Users",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "user-api-service.default.svc.cluster.local",
+                    "Host": "user-api.ingress-nginx.svc.cluster.local",
                     "Port": 80
                 }
             ],
@@ -19,7 +19,7 @@
             "UpstreamPathTemplate": "/Users/{id}",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "user-api-service.default.svc.cluster.local",
+                    "Host": "user-api.ingress-nginx.svc.cluster.local",
                     "Port": 80
                 }
             ],
