@@ -12,19 +12,6 @@
                 }
             ]
             // "ServiceName": "sublime-gateway",
-        },
-        {
-            "UpstreamPathTemplate": "/Users/{id}",
-            "UpstreamHttpMethod": ["Delete"],
-            "DownstreamPathTemplate": "/api/Users/{id}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "user-api.ingress-basic",
-                    "Port": 80
-                }
-            ]
-            // "ServiceName": "sublime-gateway",
         }
     ],
     "GlobalConfiguration": {
