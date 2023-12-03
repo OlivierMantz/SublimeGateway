@@ -1,7 +1,7 @@
 {
     "Routes": [
         {
-            "UpstreamPathTemplate": "/Users",
+            "UpstreamPathTemplate": "/",
             "UpstreamHttpMethod": ["Get"],
             "DownstreamPathTemplate": "/api/Users",
             "DownstreamScheme": "http",
