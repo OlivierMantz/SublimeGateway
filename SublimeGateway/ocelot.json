@@ -15,7 +15,11 @@
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "http://sublimewebapp.me"
+        "BaseUrl": "http://sublimewebapp.me",
+        "ServiceDiscoveryProvider": {
+            "Namespace": "propnull",
+            "Type": "KubernetesServiceDiscoveryProvider"
+          }
         // "ServiceDiscoveryProvider": {
         //     "Host": "localhost", //localhost for k3d
         //     "Port": "52003", //found using docker inspect k3d-sublimeapp-serverlb
