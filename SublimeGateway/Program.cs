@@ -5,6 +5,8 @@ using Ocelot.Provider.Kubernetes;
 
 namespace SublimeGateway
 {
+    //Tutorial:https://code-maze.com/dotnetcore-secure-microservices-jwt-ocelot/
+    //With Auth: https://auth0.com/blog/implementing-api-gateway-in-aspnet-core-with-ocelot/#Aside--Securing-ASP-NET-Core-with-Auth0
     public class Program
     {
         public static void Main(string[] args)
@@ -13,20 +15,13 @@ namespace SublimeGateway
 
             builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-            // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            //builder.Services.AddOcelot(builder.Configuration)
-            //.AddCacheManager(x =>
-            //{
-            //    x.WithDictionaryHandle();
-            //});
 
-            builder.Services.AddOcelot().AddKubernetes();
+            builder.Services.AddOcelot(builder.Configuration).AddCacheManager(settings => settings.WithDictionaryHandle());
+            //.AddKubernetes();
 
 
             var app = builder.Build();
@@ -39,7 +34,6 @@ namespace SublimeGateway
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
 
