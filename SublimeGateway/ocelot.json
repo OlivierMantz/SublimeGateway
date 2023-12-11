@@ -1,6 +1,7 @@
 {
     "Routes": [
-        //User API
+        //****************User API*********************
+
         {
             "DownstreamPathTemplate": "/api/Users",
             "DownstreamScheme": "http",
@@ -46,7 +47,7 @@
             "UpstreamPathTemplate": "/Users/{id}",
             "UpstreamHttpMethod": [ "Delete" ]
         },
-        //Comment API
+        //****************Comment API*********************
 
         {
             "DownstreamPathTemplate": "/api/Comments",
@@ -57,6 +58,9 @@
                     "Port": 5092
                 }
             ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Auth0",
+            },
             "RateLimitOptions": {
                 "ClientWhitelist": [
 
@@ -103,6 +107,10 @@
                     "Port": 5092
                 }
             ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Auth0"
+                // No specific role checks here
+            },
             "RateLimitOptions": {
                 "ClientWhitelist": [
 
@@ -113,16 +121,89 @@
                 "Limit": 1
             },
             "UpstreamPathTemplate": "/Comments/post/{id}",
-            "UpstreamHttpMethod": [ "Post" ]
+            "UpstreamHttpMethod": [ "Post", "Delete" ]
         },
-        //Delete comment
+        ////Delete comment
+        //{
+        //    "DownstreamPathTemplate": "/api/Comments/{id}",
+        //    "DownstreamScheme": "http",
+        //    "DownstreamHostAndPorts": [
+        //        {
+        //            "Host": "localhost",
+        //            "Port": 5092
+        //        }
+        //    ],
+        //    "RateLimitOptions": {
+        //        "ClientWhitelist": [
+
+        //        ],
+        //        "EnableRateLimiting": true,
+        //        "Period": "5s",
+        //        "PeriodTimespan": 1,
+        //        "Limit": 1
+        //    },
+        //    "UpstreamPathTemplate": "/Comments/{id}",
+        //    "UpstreamHttpMethod": [ "Delete" ]
+        //},
+        //****************Post API*********************
+        // Get a specific post
         {
-            "DownstreamPathTemplate": "/api/Comments/{id}",
+            "DownstreamPathTemplate": "/api/Posts/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 5092
+                    "Port": 5205
+                }
+            ],
+            "FileCacheOptions": {
+                "TtlSeconds": 30,
+                "Region": "postcaching"
+            },
+            "RateLimitOptions": {
+                "ClientWhitelist": [
+                ],
+                "EnableRateLimiting": true,
+                "Period": "5s",
+                "PeriodTimespan": 1,
+                "Limit": 1
+            },
+            "UpstreamPathTemplate": "/Posts/{id}",
+            "UpstreamHttpMethod": [ "Get" ]
+        },
+        // Get all posts from a specific User
+        {
+            "DownstreamPathTemplate": "/api/Posts/users/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5205
+                }
+            ],
+            "FileCacheOptions": {
+                "TtlSeconds": 30,
+                "Region": "postcaching"
+            },
+            "RateLimitOptions": {
+                "ClientWhitelist": [
+                ],
+                "EnableRateLimiting": true,
+                "Period": "5s",
+                "PeriodTimespan": 1,
+                "Limit": 1
+            },
+            "UpstreamPathTemplate": "/Posts/users/{id}",
+            "UpstreamHttpMethod": [ "Get" ]
+        },
+        // Create a new Post
+        {
+            "DownstreamPathTemplate": "/api/Posts",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5205
                 }
             ],
             "RateLimitOptions": {
@@ -134,10 +215,53 @@
                 "PeriodTimespan": 1,
                 "Limit": 1
             },
-            "UpstreamPathTemplate": "/Comments/{id}",
+            "UpstreamPathTemplate": "/Posts",
+            "UpstreamHttpMethod": [ "Post" ]
+        },
+        // Update a specific Post
+        {
+            "DownstreamPathTemplate": "/api/Posts/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5205
+                }
+            ],
+            "RateLimitOptions": {
+                "ClientWhitelist": [
+
+                ],
+                "EnableRateLimiting": true,
+                "Period": "5s",
+                "PeriodTimespan": 1,
+                "Limit": 1
+            },
+            "UpstreamPathTemplate": "/Posts/{id}",
+            "UpstreamHttpMethod": [ "Put" ]
+        },
+        // Delete specific Post
+        {
+            "DownstreamPathTemplate": "/api/Posts/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5205
+                }
+            ],
+            "RateLimitOptions": {
+                "ClientWhitelist": [
+
+                ],
+                "EnableRateLimiting": true,
+                "Period": "5s",
+                "PeriodTimespan": 1,
+                "Limit": 1
+            },
+            "UpstreamPathTemplate": "/Posts/{id}",
             "UpstreamHttpMethod": [ "Delete" ]
         }
-
 
 
     ],
