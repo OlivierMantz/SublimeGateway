@@ -49,4 +49,4 @@ jobs:
                   context: .
                   file: ./Dockerfile
                   push: true
-                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/sublime_gateway:local
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/sublime_gateway:kube-local

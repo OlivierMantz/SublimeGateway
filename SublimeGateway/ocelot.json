@@ -6,8 +6,8 @@
             "UpstreamPathTemplate": "/Users",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5242
+                    "Host": "user-api-service.ingress-nginx",
+                    "Port": 80
                 }
             ],
             // "ServiceName": "sublime-gateway",
@@ -19,8 +19,8 @@
             "UpstreamPathTemplate": "/Users/{id}",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5242
+                    "Host": "user-api-service.ingress-nginx",
+                    "Port": 80
                 }
             ],
             // "ServiceName": "sublime-gateway",
