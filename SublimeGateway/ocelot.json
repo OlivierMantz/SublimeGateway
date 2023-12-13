@@ -6,7 +6,7 @@
             "UpstreamPathTemplate": "/Users",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "user-api-service.ingress-nginx",
+                    "Host": "user-api-service.default",
                     "Port": 80
                 }
             ],
@@ -19,7 +19,7 @@
             "UpstreamPathTemplate": "/Users/{id}",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "user-api-service.ingress-nginx",
+                    "Host": "user-api-service.default",
                     "Port": 80
                 }
             ],
