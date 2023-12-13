@@ -6,8 +6,8 @@
             "UpstreamPathTemplate": "/Users",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "user-api-service.default.svc.cluster.local",
-                    "Port": 80
+                    "Host": "localhost",
+                    "Port": 5242
                 }
             ],
             // "ServiceName": "sublime-gateway",
@@ -19,8 +19,8 @@
             "UpstreamPathTemplate": "/Users/{id}",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "user-api-service.default.svc.cluster.local",
-                    "Port": 80
+                    "Host": "localhost",
+                    "Port": 5242
                 }
             ],
             // "ServiceName": "sublime-gateway",
