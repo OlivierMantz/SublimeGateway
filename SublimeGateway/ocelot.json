@@ -48,18 +48,18 @@
             "UpstreamHttpMethod": [ "Delete" ]
         },
         //****************Comment API*********************
-
+        // Get all comments
         {
             "DownstreamPathTemplate": "/api/Comments",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5092
+                    "Host": "commentapi-service",
+                    "Port": 80
                 }
             ],
             "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Auth0",
+                "AuthenticationProviderKey": "Auth0"
             },
             "RateLimitOptions": {
                 "ClientWhitelist": [
@@ -73,13 +73,14 @@
             "UpstreamPathTemplate": "/Comments",
             "UpstreamHttpMethod": [ "Get" ]
         },
+        // Get all comments in post
         {
             "DownstreamPathTemplate": "/api/Comments/post/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5092
+                    "Host": "commentapi-service",
+                    "Port": 80
                 }
             ],
             "FileCacheOptions": {
@@ -97,14 +98,14 @@
             "UpstreamPathTemplate": "/Comments/post/{id}",
             "UpstreamHttpMethod": [ "Get" ]
         },
-        //Create new comment on post
+        // Create, Update, Delete new comment in post
         {
             "DownstreamPathTemplate": "/api/Comments/post/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5092
+                    "Host": "commentapi-service",
+                    "Port": 80
                 }
             ],
             "AuthenticationOptions": {
@@ -121,16 +122,38 @@
                 "Limit": 1
             },
             "UpstreamPathTemplate": "/Comments/post/{id}",
-            "UpstreamHttpMethod": [ "Post", "Delete" ]
+            "UpstreamHttpMethod": [ "Post", "Delete", "Update" ]
         },
-        ////Delete comment
+        // Update comment
         //{
         //    "DownstreamPathTemplate": "/api/Comments/{id}",
         //    "DownstreamScheme": "http",
         //    "DownstreamHostAndPorts": [
         //        {
-        //            "Host": "localhost",
-        //            "Port": 5092
+        //            "Host": "commentapi-service",
+        //            "Port": 80
+        //        }
+        //    ],
+        //    "RateLimitOptions": {
+        //        "ClientWhitelist": [
+
+        //        ],
+        //        "EnableRateLimiting": true,
+        //        "Period": "5s",
+        //        "PeriodTimespan": 1,
+        //        "Limit": 1
+        //    },
+        //    "UpstreamPathTemplate": "/Comments/{id}",
+        //    "UpstreamHttpMethod": [ "Update" ]
+        //},
+        //// Delete comment
+        //{
+        //    "DownstreamPathTemplate": "/api/Comments/{id}",
+        //    "DownstreamScheme": "http",
+        //    "DownstreamHostAndPorts": [
+        //        {
+        //            "Host": "commentapi-service",
+        //            "Port": 80
         //        }
         //    ],
         //    "RateLimitOptions": {
