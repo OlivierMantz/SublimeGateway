@@ -38,8 +38,9 @@ namespace SublimeGateway
                 };
             });
 
-            builder.Services.AddOcelot(builder.Configuration).AddCacheManager(settings => settings.WithDictionaryHandle());
-            //.AddKubernetes();
+            builder.Services.AddOcelot(builder.Configuration)
+                            .AddCacheManager(settings => settings.WithDictionaryHandle())
+                            .AddKubernetes();
 
 
             var app = builder.Build();
