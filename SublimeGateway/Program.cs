@@ -22,21 +22,21 @@ namespace SublimeGateway
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer("Auth0",options =>
-            {
-                options.Authority = $"https://{builder.Configuration["Auth0:Domain"]}";
-                options.Audience = builder.Configuration["Auth0:Audience"];
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    NameClaimType = ClaimTypes.Name,
-                    RoleClaimType = "https://sublimewebapp.me/roles"
+            //builder.Services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //}).AddJwtBearer("Auth0",options =>
+            //{
+            //    options.Authority = $"https://{builder.Configuration["Auth0:Domain"]}";
+            //    options.Audience = builder.Configuration["Auth0:Audience"];
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        NameClaimType = ClaimTypes.Name,
+            //        RoleClaimType = "https://sublimewebapp.me/roles"
 
-                };
-            });
+            //    };
+            //});
 
             builder.Services.AddOcelot(builder.Configuration)
                             .AddCacheManager(settings => settings.WithDictionaryHandle())
